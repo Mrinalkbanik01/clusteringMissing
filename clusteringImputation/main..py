@@ -5,28 +5,37 @@ from dummyData import data
 from typing import Literal
 from basicImputer import mice , sice , em
 from clustering import encode , decode
-def impute(df , basic_imputation : Literal["mice" , "sice" , "em"] , num_imputation : Literal["mean" , "median"] , 
-           corr_threshold : 0.6 , max_iter : 10):
-    num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-    cat_cols = df.select_dtypes(include=["object", "category"]).columns.tolist()
-    encode(df , cat_cols)
-    clusters = getClusters(df , num_imputation , corr_threshold  , num_cols , cat_cols)
-    dataFrames = []
-    for cluster in clusters:
-        df_cl = df[cluster]
-        if basic_imputation == "mice":
-            df_cl = mice(df_cl ,max_iter)
-        elif basic_imputation == "sice":
-            df_cl = sice(df_cl , max_iter)
-        else:
-            df_cl = em(df_cl)
-        dataFrames.append(df_cl)
 
-    ans = dataFrames[0]
-    for i in range(1 , len(dataFrames)):
-        ans = pd.concat([ans , dataFrames[i]] , axis = 1)
-    decode(ans  , cat_cols)
-    df = ans
+class clusterImputer:
+    def __init__(self , data ,basic_imputation : Literal["mice" , "sice" , "em"] , num_imputation : Literal["mean" , "median"] , 
+            corr_threshold : 0.6 , max_iter : 10):
+        self.df = data
+        self.basic_imputation = basic_imputation
+        self.num_imputation = num_imputation
+        self.corr_threshold = 0.6
+        self.max_iter = max_iter
+        self.num_cols = self.df.select_dtypes(include=[np.number]).columns.tolist()
+        self.cat_cols = self.df.select_dtypes(include=["object", "category"]).columns.tolist()
+
+    def impute(self):
+        encode(self.df , self.cat_cols)
+        clusters = getClusters(self.df , self.num_imputation , self.corr_threshold  , self.num_cols , self.cat_cols)
+        dataFrames = []
+        for cluster in clusters:
+            df_cl = self.df[cluster]
+            if self.basic_imputation == "mice":
+                df_cl = mice(df_cl ,self.max_iter)
+            elif self.basic_imputation == "sice":
+                df_cl = sice(df_cl , self.max_iter)
+            else:
+                df_cl = em(df_cl)
+            dataFrames.append(df_cl)
+
+        ans = dataFrames[0]
+        for i in range(1 , len(dataFrames)):
+            ans = pd.concat([ans , dataFrames[i]] , axis = 1)
+        decode(ans  , self.cat_cols)
+        self.df = ans
 
     
 # testing
