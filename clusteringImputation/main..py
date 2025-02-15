@@ -12,7 +12,7 @@ class clusterImputer:
         self.df = data
         self.basic_imputation = basic_imputation
         self.num_imputation = num_imputation
-        self.corr_threshold = 0.6
+        self.corr_threshold = corr_threshold   
         self.max_iter = max_iter
         self.num_cols = self.df.select_dtypes(include=[np.number]).columns.tolist()
         self.cat_cols = self.df.select_dtypes(include=["object", "category"]).columns.tolist()
