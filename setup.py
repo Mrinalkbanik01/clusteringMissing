@@ -7,13 +7,13 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.1'
+VERSION = '1.0.0'
 DESCRIPTION = 'Adding correlation to handle MNAR'
 LONG_DESCRIPTION = 'A package that allows us to impute for all types of missingness(MAR , MCAR , MNAR)'
 
 # Setting up
 setup(
-    name="clustering-imputation",
+    name="clustering_imputation",
     version=VERSION,
     author="MRINAL KANGSA BANIK",
     author_email="<manukbanik30@gmail.com>",
