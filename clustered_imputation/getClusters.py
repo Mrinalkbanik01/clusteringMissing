@@ -1,6 +1,6 @@
 from typing import Literal
 import numpy as np
-from clustering_imputation.clusterBase import cluster_features
+from clustered_imputation.clusterBase import cluster_features
 
 
 def getClusters(df, num_imputation: Literal["mean", "median"], corr_threshold : 0.6 , num_cols , cat_cols):

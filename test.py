@@ -14,7 +14,7 @@ df = pd.DataFrame(data)
 # Display the DataFrame
 print(df)
 
-from clustering_imputation import clusterImputer
+from clustered_imputation import clusterImputer
 x = clusterImputer(df , "mice" ,"mean" , 0.4 ,10)
 x.impute()
 print(df)

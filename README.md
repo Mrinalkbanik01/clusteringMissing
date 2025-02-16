@@ -2,14 +2,14 @@
 ## Installation
 To install the package, run:
 ```bash
-pip install clustering-imputation==1.0.0
+pip install clustering-imputation
 ```
 ## Usage
 
 ```python
-from clustering_imputation import clusterImputer
+from clustered_imputation import clusterImputer
 df = ...  # Load your dataset
-x = clusterImputer(df, "mice", "mean", 0.4, 10)
+x = clusterImputer(data , basic_imputation , num_imputation , corr_threshold , max_iter)
 x.impute()
 ```
 # About the Package

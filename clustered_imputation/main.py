@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 from .getClusters import getClusters
-from clustering_imputation.dummyData import data
+from clustered_imputation.dummyData import data
 from typing import Literal
-from clustering_imputation.basicImputer import mice , sice , em
-from clustering_imputation.clusterBase import encode , decode
+from clustered_imputation.basicImputer import mice , sice , em
+from clustered_imputation.clusterBase import encode , decode
 
 class clusterImputer:
     def __init__(self , data ,basic_imputation : Literal["mice" , "sice" , "em"] , num_imputation : Literal["mean" , "median"] , 

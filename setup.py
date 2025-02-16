@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'A package that allows us to impute for all types of missingn
 
 # Setting up
 setup(
-    name="clustering_imputation",
+    name="clustered_imputation",
     version=VERSION,
     author="MRINAL KANGSA BANIK",
     author_email="<manukbanik30@gmail.com>",
