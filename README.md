@@ -13,7 +13,12 @@ x = clusterImputer(df, "mice", "mean", 0.4, 10)
 x.impute()
 ```
 # About the Package
-
+## Features to be passed to the class clusterImputer
+* data --> Pass your dataframe
+* basic_imputation : Literal["mice" , "sice" , "em"] --> What imputation you want to perform on your clusters
+* num_imputation : Literal["mean" , "median"] --> How do you want to handle your initial numeric column imputation for creating correlation matrix
+* corr_threshold : 0.6 -->Threshold value to be used with respect to correlation matrix to create clusters
+* max_iter : 10 -->Maximum iteration for MICE and SICE
 ## Problem Statement
 
 * Traditional imputation techniques face several challenges:
@@ -37,6 +42,7 @@ We propose a clustering-based approach:
 * Combine results to reconstruct the dataset.
 
 * This method effectively handles MNAR data by leveraging feature correlations.
+
 For further details refer this [ppt](https://docs.google.com/presentation/d/1UZ2uDkleSgB2ZttjG1D6nmQhqk7uz5FQRW5UmSkB0Sg/edit?usp=sharing)
 ## Contributing
 

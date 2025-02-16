@@ -35,7 +35,7 @@ class clusterImputer:
         for i in range(1 , len(dataFrames)):
             ans = pd.concat([ans , dataFrames[i]] , axis = 1)
         decode(ans  , self.cat_cols)
-        self.df = ans
+        self.df.loc[:, :] = ans
 
     
 # testing
